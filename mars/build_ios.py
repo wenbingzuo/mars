@@ -19,7 +19,7 @@ def generate_lib(platform, deps = None, filter = None):
     clean(BUILD_OUT_PATH)
     os.chdir(BUILD_OUT_PATH)
 
-    command = 'cmake ../.. -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=../../ios.toolchain.cmake -DPLATFORM=%s -DENABLE_ARC=0 -DENABLE_BITCODE=0 -DENABLE_VISIBILITY=1 && make -j8 && make install' % platform
+    command = 'cmake ../.. -DDEPLOYMENT_TARGET=12.0 -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=../../ios.toolchain.cmake -DPLATFORM=%s -DENABLE_ARC=0 -DENABLE_BITCODE=0 -DENABLE_VISIBILITY=1 && make -j8 && make install' % platform
     ret = os.system(command)
     os.chdir(SCRIPT_PATH)
     if ret != 0:
